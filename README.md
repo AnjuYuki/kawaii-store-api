@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kawaii Store API
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=for-the-badge&logo=vercel)
+![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)
+![Status](https://img.shields.io/badge/Status-MVP-success?style=for-the-badge)
 
-First, run the development server:
+Kawaii Store API は、フロントエンド学習者向けの日本語モックAPIです。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+日本語の商品名、日本円価格、かわいいカテゴリの商品データを使って、商品一覧ページや商品詳細ページの制作練習ができます。
+
+## 特徴
+
+- 日本語の商品データ
+- 日本円価格
+- かわいいカテゴリ
+- 商品一覧・商品詳細API
+- React / Next.js / Vue / Angular / TypeScript の学習向け
+
+## エンドポイント一覧
+
+| Method | Endpoint                       | Description                |
+| ------ | ------------------------------ | -------------------------- |
+| GET    | `/api/products`                | 商品一覧を取得             |
+| GET    | `/api/products/:id`            | 商品詳細を取得             |
+| GET    | `/api/categories`              | カテゴリ一覧を取得         |
+| GET    | `/api/products/category/:slug` | カテゴリ別の商品一覧を取得 |
+
+## レスポンス例
+
+### /api/products
+
+```json
+[
+  {
+    "id": 1,
+    "title": "くまさんメロンパン",
+    "description": "くまの形をした、ふんわり甘いメロンパン。",
+    "price": 260,
+    "currency": "JPY",
+    "category": "bread",
+    "images": [
+      "/images/categories/bread.png"
+    ],
+    "isNew": true,
+    "isPopular": true,
+    "rating": {
+      "rate": 4.7,
+      "count": 132
+    }
+  },
+
+  ...
+]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### /api/categories
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```json
+[
+  {
+    "slug": "bread",
+    "name": "パン",
+    "image": "/images/categories/bread.png"
+  },
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  ...
+]
+```
 
-## Learn More
+### ローカル開発
 
-To learn more about Next.js, take a look at the following resources:
+リポジトリをクローン
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+git clone https://github.com/AnjuYuki/kawaii-store-api.git
+cd kawaii-store-api
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+依存関係をインストール
 
-## Deploy on Vercel
+```bash
+pnpm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ローカルサーバーを立ち上げ
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm dev
+```
+
+開く
+
+```txt
+http://localhost:3000
+```
