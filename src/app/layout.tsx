@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_JP, Space_Mono } from 'next/font/google';
 import './globals.css';
+import { RootProvider } from 'fumadocs-ui/provider/next';
 
 const notoSansJP = Noto_Sans_JP({
   variable: '--font-noto-sans-jp',
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={`${notoSansJP.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <RootProvider>{children}</RootProvider>
+      </body>
     </html>
   );
 }
