@@ -1,0 +1,9 @@
+import { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+
+export function baseOptions(): BaseLayoutProps {
+  return {
+    nav: {
+      title: 'Kawaii Store API',
+    },
+  };
+}
