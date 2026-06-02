@@ -1,5 +1,6 @@
 import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
+import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import type { MDXComponents } from 'mdx/types';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -11,6 +12,7 @@ export function getMDXComponents(components?: MDXComponents) {
         <Pre>{props.children}</Pre>
       </CodeBlock>
     ),
+    ...TabsComponents,
     ...components,
   } satisfies MDXComponents;
 }

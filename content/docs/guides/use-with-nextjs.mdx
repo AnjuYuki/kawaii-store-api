@@ -1,0 +1,122 @@
+---
+title: Next.jsで使う
+description: Kawaii Store APIをNext.jsから使う例
+---
+
+# Next.jsで使う
+
+このページでは、Kawaii Store APIをNext.jsから使う基本例を紹介します。
+
+## 商品一覧を取得する
+
+```ts title="src/lib/products.ts"
+export type CategorySlug =
+  | 'bread'
+  | 'sweets'
+  | 'drink'
+  | 'stationery'
+  | 'kitchen'
+  | 'cosmetics'
+  | 'lifestyle';
+
+export type Product = {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  currency: 'JPY';
+  category: CategorySlug;
+  images: string[]; // 複数枚表示でmap練習
+  isNew: boolean;
+  isPopular: boolean;
+  rating: {
+    rate: number;
+    count: number;
+  };
+};
+
+export async function getProducts(): Promise<Product[]> {
+  const res = await fetch('https://kawaii-store-api.vercel.app/api/products');
+
+  if (!res.ok) {
+    throw new Error('商品の取得に失敗しました');
+  }
+
+  return res.json();
+}
+```
+
+## ページで表示する
+
+```tsx title="src/app/products/page.tsx"
+import { Image } from 'next/image';
+import { Product, getProducts } from '@/lib/products';
+
+export default async function ProductsPage() {
+  const products: Product[] = await getProducts();
+
+  return (
+    <main>
+      <h1>商品一覧</h1>
+
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Image src={product.image} alt={product.name} width={160} />
+            <h2>{product.title}</h2>
+            <p>{product.price}円</p>
+          </li>
+        ))}
+      </ul>
+    </main>
+  );
+}
+```
+
+## キャッシュを無効にする場合
+
+常に最新データを取りたい場合は、`fetch` に `cache: "no-store"` を追加します。
+
+```ts title="src/lib/products.ts" {8}
+export async function getProducts(): Promise<Product[]> {
+  const res = await fetch('https://kawaii-store-api.vercel.app/api/products', {
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('商品の取得に失敗しました');
+  }
+
+  return res.json();
+}
+```
+
+## 1件だけ取得する
+
+```ts title="src/lib/products.ts"
+export async function getProduct(id: number): Promise<Product> {
+  const res = await fetch(
+    `https://kawaii-store-api.vercel.app/api/products/${id}`,
+  );
+
+  if (!res.ok) {
+    throw new Error('商品の取得に失敗しました');
+  }
+
+  return res.json();
+}
+```
+
+## npm / pnpm / yarn
+
+```bash tab="npm"
+npm install
+```
+
+```bash tab="pnpm"
+pnpm install
+```
+
+```bash tab="yarn"
+yarn install
+```
