@@ -9,6 +9,7 @@ export const i18nUI = i18n
     ja: {
       displayName: 'Japanese',
       search: '検索',
+      toc: 'このページ',
     },
     en: {
       displayName: 'English',
