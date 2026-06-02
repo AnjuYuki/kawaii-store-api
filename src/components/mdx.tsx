@@ -1,6 +1,7 @@
 import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
+import * as Twoslash from 'fumadocs-twoslash/ui';
 import type { MDXComponents } from 'mdx/types';
 
 export function getMDXComponents(components?: MDXComponents) {
@@ -13,6 +14,7 @@ export function getMDXComponents(components?: MDXComponents) {
       </CodeBlock>
     ),
     ...TabsComponents,
+    ...Twoslash,
     ...components,
   } satisfies MDXComponents;
 }
