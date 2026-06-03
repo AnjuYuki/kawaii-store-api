@@ -1,11 +1,11 @@
 ---
-title: クイックスタート
-description: まずは簡単にデータを取得してみましょう
+title: Quick Start
+description: Let's start by fetching some data in a simple way
 ---
 
-## fetchで商品データを取得
+## Fetching Product Data with fetch
 
-まず1件の商品データを取得して、APIの動作を確認してみましょう。
+Let's fetch a single product to see how the API works.
 
 ```js title="JavaScript" lineNumbers
 const response = await fetch(
@@ -15,9 +15,9 @@ const product = await response.json();
 console.log(product);
 ```
 
-コードをコピーして、ブラウザのコンソールで実行してみましょう。
+Copy the code and run it in your browser's console.
 
-### レスポンス
+### Response
 
 ```json
 {
@@ -34,4 +34,4 @@ console.log(product);
 }
 ```
 
-`id`が`1`の商品データが返ってきます。
+This returns the product data for `id` `1`.
