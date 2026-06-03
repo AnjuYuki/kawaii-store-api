@@ -3,3 +3,47 @@ title: はじめに
 description: Kawaii Store API の概要
 icon: House
 ---
+
+import { ShoppingCart, Tag, Languages } from 'lucide-react';
+
+Kawaii Store API は、フロントエンド学習用の**日本語モック REST API** です。
+認証不要・無料で、商品・カテゴリデータを JSON 形式で取得できます。
+
+<Callout title="認証不要・無料">
+  API キーなしで今すぐ使えます。\
+  ベースURLにエンドポイントを繋げてリクエストを送るだけ！
+
+```txt
+https://kawaii-store-api.vercel.app/api
+```
+
+</Callout>
+
+## できること
+
+<Cards>
+  <Card
+    title="商品一覧・詳細の取得"
+    icon={<ShoppingCart />}
+    href="/docs/endpoints/products"
+  >
+    様々なカテゴリの商品一覧と詳細データを取得。 ショッピングサイトの練習に。
+  </Card>
+  <Card
+    title="カテゴリ別フィルタリング"
+    icon={<Tag />}
+    href="/docs/endpoints/categories"
+  >
+    カテゴリ別に商品を絞り込み。タブ切り替えUIの練習などに効果的。
+  </Card>
+  <Card title="日本語データ" icon={<Languages />}>
+    既存の商品APIの多くは英語データですが、Kawaii Store API は日本語に特化。
+  </Card>
+</Cards>
+
+## 次のステップ
+
+- [クイックスタート](/docs/getting-started)
+  最初のリクエストを送る
+- [エンドポイント一覧](/docs/endpoints/products)
+  全APIの仕様を確認する
