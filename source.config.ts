@@ -1,4 +1,7 @@
-import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
+import {
+  rehypeCodeDefaultOptions,
+  remarkSteps,
+} from 'fumadocs-core/mdx-plugins';
 import { defineConfig, defineDocs } from 'fumadocs-mdx/config';
 import { transformerTwoslash } from 'fumadocs-twoslash';
 
@@ -19,5 +22,6 @@ export default defineConfig({
       ],
       langs: ['js', 'jsx', 'ts', 'tsx'],
     },
+    remarkPlugins: [remarkSteps],
   },
 });

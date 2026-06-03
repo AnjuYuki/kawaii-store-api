@@ -3,13 +3,11 @@ title: Next.jsで使う
 description: Kawaii Store APIをNext.jsから使う例
 ---
 
-# Next.jsで使う
-
 このページでは、Kawaii Store APIをNext.jsから使う基本例を紹介します。
 
 ## 商品一覧を取得する
 
-```ts title="src/lib/products.ts"
+```ts title="src/lib/products.ts" lineNumbers
 export type CategorySlug =
   | 'bread'
   | 'sweets'
@@ -48,7 +46,7 @@ export async function getProducts(): Promise<Product[]> {
 
 ## ページで表示する
 
-```tsx title="src/app/products/page.tsx"
+```tsx title="src/app/products/page.tsx" lineNumbers
 import { Image } from 'next/image';
 import { Product, getProducts } from '@/lib/products';
 
@@ -77,10 +75,10 @@ export default async function ProductsPage() {
 
 常に最新データを取りたい場合は、`fetch` に `cache: "no-store"` を追加します。
 
-```ts title="src/lib/products.ts" {8}
+```ts title="src/lib/products.ts" lineNumbers
 export async function getProducts(): Promise<Product[]> {
   const res = await fetch('https://kawaii-store-api.vercel.app/api/products', {
-    cache: 'no-store',
+    cache: 'no-store', // [!code highlight]
   });
 
   if (!res.ok) {
@@ -93,7 +91,7 @@ export async function getProducts(): Promise<Product[]> {
 
 ## 1件だけ取得する
 
-```ts title="src/lib/products.ts"
+```ts title="src/lib/products.ts" lineNumbers
 export async function getProduct(id: number): Promise<Product> {
   const res = await fetch(
     `https://kawaii-store-api.vercel.app/api/products/${id}`,
@@ -105,18 +103,4 @@ export async function getProduct(id: number): Promise<Product> {
 
   return res.json();
 }
-```
-
-## npm / pnpm / yarn
-
-```bash tab="npm"
-npm install
-```
-
-```bash tab="pnpm"
-pnpm install
-```
-
-```bash tab="yarn"
-yarn install
 ```
