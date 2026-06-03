@@ -6,6 +6,8 @@ icon: House
 
 import { House } from 'lucide-react';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { File, Folder, Files } from 'fumadocs-ui/components/files';
+import { TypeTable } from 'fumadocs-ui/components/type-table';
 
 ## Heading
 
@@ -129,4 +131,95 @@ npm install -D prettier prettier-plugin-tailwindcss
   <Accordion title="My Title">My Content</Accordion>
 </Accordions>
 
-## オートタイプテーブル
+## ファイル
+
+<Files>
+  <Folder name="app" defaultOpen>
+    <File name="layout.tsx" />
+    <File name="page.tsx" />
+    <File name="globals.css" />
+  </Folder>
+  <Folder name="components">
+    <File name="button.tsx" />
+    <File name="tabs.tsx" />
+    <File name="dialog.tsx" />
+  </Folder>
+  <File name="package.json" />
+</Files>
+
+## タイプテーブル
+
+<TypeTable
+  type={{
+    id: {
+      type: 'number',
+      description: '商品ID',
+      required: true,
+    },
+    title: {
+      type: 'string',
+      description: '商品名',
+      required: true,
+    },
+    description: {
+      type: 'string',
+      description: '商品の説明文',
+      required: true,
+    },
+    price: {
+      type: 'number',
+      description: '価格',
+      required: true,
+    },
+    currency: {
+      type: "'JPY'",
+      description: '通貨コード',
+      required: true,
+    },
+    category: {
+      type: 'Category',
+      description: '商品カテゴリ',
+      required: true,
+      typeDescription:
+        "'bread' | 'sweets' | 'drink' | 'stationery' | 'kitchen' | 'cosmetics' | 'lifestyle'",
+    },
+    images: {
+      type: 'string[]',
+      description: '商品画像のパス一覧',
+      required: true,
+    },
+    isNew: {
+      type: 'boolean',
+      description: '新商品フラグ',
+      required: true,
+    },
+    isPopular: {
+      type: 'boolean',
+      description: '人気商品フラグ',
+      required: true,
+    },
+    rating: {
+      type: 'Rating',
+      description: '評価情報',
+      required: true,
+      typeDescription: '下の Rating テーブルを参照',
+    },
+  }}
+/>
+
+### Rating
+
+<TypeTable
+  type={{
+    rate: {
+      type: 'number',
+      description: '平均評価スコア（1〜5）',
+      required: true,
+    },
+    count: {
+      type: 'number',
+      description: 'レビュー件数',
+      required: true,
+    },
+  }}
+/>

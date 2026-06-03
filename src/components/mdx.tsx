@@ -3,6 +3,7 @@ import defaultMdxComponents from 'fumadocs-ui/mdx';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import * as Twoslash from 'fumadocs-twoslash/ui';
 import type { MDXComponents } from 'mdx/types';
+import { ImageZoom } from 'fumadocs-ui/components/image-zoom';
 
 export function getMDXComponents(components?: MDXComponents) {
   return {
@@ -13,6 +14,8 @@ export function getMDXComponents(components?: MDXComponents) {
         <Pre>{props.children}</Pre>
       </CodeBlock>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    img: (props) => <ImageZoom {...(props as any)} />,
     ...TabsComponents,
     ...Twoslash,
     ...components,
